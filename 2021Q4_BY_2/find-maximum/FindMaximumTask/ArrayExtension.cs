@@ -1,0 +1,37 @@
+﻿using System;
+
+namespace FindMaximumTask
+{
+    /// <summary>
+    /// Class for operations with array.
+    /// </summary>
+    public static class ArrayExtension
+    {
+        /// <summary>
+        /// Finds the element of the array with the maximum value.
+        /// </summary>
+        /// <param name="array"> Source array. </param>
+        /// <returns>The element of the array with the maximum value.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when array is null.</exception>
+        /// <exception cref="ArgumentException">Thrown when array is empty.</exception>
+        public static int FindMaximum(int[] array)
+        {
+            if (array is null)
+            {
+                throw new ArgumentNullException(nameof(array), "Source array cannot be null.");
+            }
+            else if (array.Length == 0)
+            {
+                throw new ArgumentException("Source array cannot be empty.", nameof(array));
+            }
+
+            int maxValue = int.MinValue;
+            for (int i = 0; i < array.Length; i++)
+            {
+                maxValue = maxValue < array[i] ? array[i] : maxValue;
+            }
+
+            return maxValue;
+        }
+    }
+}
